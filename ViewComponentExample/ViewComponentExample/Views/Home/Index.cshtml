@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Home Page</h1>
+</div>
+
+<div class="view-component">
+    @await Component.InvokeAsync("PopularNews")
+</div>
+
+<div class="view-component-ajax">
+    <button type="button" id="btnCallAjax"> Click to call view component</button>
+    <div class="content">
+
+    </div>
+</div>
+
+@section Scripts{ 
+
+<script>
+    $(document).ready(function () {
+        $("#btnCallAjax").click(function () {
+            $.ajax({
+                url: "../Home/GetTopMessage",
+                type: "get",
+                dataType: "html",
+                beforeSend: function (x) {
+                },
+                data: null,
+                success: function (result) {
+                    $(".view-component-ajax .content").html(result);
+                }
+            });
+        });
+    });
+</script>
+
+}

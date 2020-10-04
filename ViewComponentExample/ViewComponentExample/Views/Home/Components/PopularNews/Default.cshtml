@@ -1,0 +1,20 @@
+﻿@model List<NewModel>
+@if(Model != null && Model.Any())
+{
+    <h1>Popular News</h1>
+    <ul class="popular-news">
+        @foreach(var news in Model)
+        {
+            <li>
+                <a>
+                    <figure class="img">
+                        <img src="@news.Image" alt="@news.Title" />
+                    </figure>
+                    <div class="title">
+                        <h2 title="@news.Title">@news.Title</h2>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+}
